@@ -15,7 +15,6 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.zoovisitor.dev.AssetFileBundle;
 
 
 public class ZooApplication extends Application<ZooConfiguration> {
@@ -31,9 +30,9 @@ public class ZooApplication extends Application<ZooConfiguration> {
   public void initialize(Bootstrap<ZooConfiguration> bootstrap) {
     bootstrap.addBundle(new ViewBundle());
     // use this for development
-    bootstrap.addBundle(new AssetFileBundle("/Users/markus/code/zoo-visitor/src/main/resources/static", "/static"));
+    //bootstrap.addBundle(new AssetFileBundle("/Users/markus/code/zoo-visitor/src/main/resources/static", "/static"));
     // use this in production
-    bootstrap.addBundle(new AssetsBundle("/static/", "/static"));
+    bootstrap.addBundle(new AssetsBundle("/static", "/_static"));
   }
 
   @Override

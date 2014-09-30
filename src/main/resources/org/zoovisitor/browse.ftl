@@ -8,9 +8,7 @@
     <title>Zoo Visitor</title>
 
     <!-- Bootstrap -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="/_static/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
           padding-top: 60px;
@@ -48,7 +46,7 @@
 
             <ol id="path" class="breadcrumb">
               <#assign curr="" />
-              <li></li>
+              <li<#if !path?has_content> class="active"</#if>><a href="/">root</a></li>
               <#if path?has_content>
                 <#list path as p>
                   <#assign curr = curr + "/" + p />
