@@ -24,10 +24,12 @@ public class BrowseResource {
 
   @Context UriInfo uriInfo;
 
+  private final ZooConfiguration cfg;
   private final ZooKeeper zk;
   private final Splitter PATH_SPLITTER = Splitter.on("/").omitEmptyStrings();
 
-  public BrowseResource(ZooKeeper zk) {
+  public BrowseResource(ZooConfiguration cfg, ZooKeeper zk) {
+    this.cfg = cfg;
     this.zk = zk;
   }
 
@@ -47,7 +49,7 @@ public class BrowseResource {
       Stat stat = new Stat();
       String data = new String(zk.getData(path, false, stat));
       List<String> children = zk.getChildren(path, false);
-      return new NodeView(data, Lists.newArrayList(PATH_SPLITTER.split(path)), children);
+      return new NodeView(cfg.getConnection(), data, Lists.newArrayList(PATH_SPLITTER.split(path)), children);
     } catch (IllegalArgumentException e) {
       throw new NotFoundException("Path "+path+" not existing.");
     }

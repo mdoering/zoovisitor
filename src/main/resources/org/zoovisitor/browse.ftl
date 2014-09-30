@@ -44,7 +44,7 @@
 
         <div id="browser">
             <h1>Browse Zookeeper</h1>
-            <p>c1n1.gbif.org,c1n1.gbif.org,c1n1.gbif.org</p>
+            <p>${connection}</p>
 
             <ol id="path" class="breadcrumb">
               <#assign curr="" />

@@ -41,7 +41,7 @@ public class ZooApplication extends Application<ZooConfiguration> {
     this.cfg = cfg;
     // resources
     ZooKeeper zk = connect(cfg.getConnection(), 5000);
-    env.jersey().register(new BrowseResource(zk));
+    env.jersey().register(new BrowseResource(cfg, zk));
     // register request filter
     env.jersey().property(ResourceConfig.PROPERTY_CONTAINER_REQUEST_FILTERS,
       Joiner.on(";").skipNulls().join(PathToParamFilter.class, null).toString());
